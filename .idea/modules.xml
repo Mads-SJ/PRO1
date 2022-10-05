@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/01_HelloWorld/01_HelloWorld.iml" filepath="$PROJECT_DIR$/01_HelloWorld/01_HelloWorld.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02_SimpleProg/02_SimpleProg.iml" filepath="$PROJECT_DIR$/02_SimpleProg/02_SimpleProg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/03_Objects/03_Objects.iml" filepath="$PROJECT_DIR$/03_Objects/03_Objects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04_Classes/04_Classes.iml" filepath="$PROJECT_DIR$/04_Classes/04_Classes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05_Types/05_Types.iml" filepath="$PROJECT_DIR$/05_Types/05_Types.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06_Selection&amp;Scanner/06_Selection&amp;Scanner.iml" filepath="$PROJECT_DIR$/06_Selection&amp;Scanner/06_Selection&amp;Scanner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07_Repetition/07_Repetition.iml" filepath="$PROJECT_DIR$/07_Repetition/07_Repetition.iml" />
+      <module fileurl="file://$PROJECT_DIR$/08_WhileLoops/08_WhileLoops.iml" filepath="$PROJECT_DIR$/08_WhileLoops/08_WhileLoops.iml" />
+      <module fileurl="file://$PROJECT_DIR$/09_ForLoops/09_ForLoops.iml" filepath="$PROJECT_DIR$/09_ForLoops/09_ForLoops.iml" />
+      <module fileurl="file://$PROJECT_DIR$/10_DieProject/10_DieProject.iml" filepath="$PROJECT_DIR$/10_DieProject/10_DieProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PRO1.iml" filepath="$PROJECT_DIR$/PRO1.iml" />
+    </modules>
+  </component>
+</project>
