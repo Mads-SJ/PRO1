@@ -75,5 +75,31 @@ public class ArrayApp {
         System.out.println("Optimized test af t og tShort er");
         tSum = metode.makeSumOpg7Optimized(t, tShort);
         metode.printArray(tSum);
+
+        // LEKTION 13 OPG 4
+        t = new int[]{1, 2, 3, 4, 5, 6};
+        System.out.println("array t:");
+        metode.printArray(t);
+
+        // 1
+        System.out.println();
+        int[] tSwitched = metode.switchFirstAndLast(t);
+        metode.printArray(tSwitched);
+
+        // 2
+        System.out.println();
+        int[] tPushed = metode.pushElements(t);
+        metode.printArray(tPushed);
+
+        // 3
+        System.out.println();
+        int[] tReplaced = metode.replaceEvenWithZero(t);
+        metode.printArray(tReplaced);
+
+        // 4
+        System.out.println();
+        System.out.println(metode.findSecondHighest(t));
+        int[] t2 = {1, 2, 3, 4, 6, 5};
+        System.out.println(metode.findSecondHighest(t2));
     }
 }

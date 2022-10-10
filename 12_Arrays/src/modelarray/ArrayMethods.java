@@ -6,8 +6,7 @@ public class ArrayMethods {
         for (int i = 0; i < tabel.length; i++) {
             if (i == 0) {
                 System.out.print(tabel[i]);
-            }
-            else {
+            } else {
                 System.out.print(", " + tabel[i]);
             }
         }
@@ -33,66 +32,121 @@ public class ArrayMethods {
     }
 
     public int[] makeSum(int[] a, int[] b) {
-        int[] sumArray = new int[a.length];
+        int[] c = new int[a.length];
 
         for (int i = 0; i < a.length; i++) {
-            sumArray[i] = a[i] + b[i];
+            c[i] = a[i] + b[i];
         }
 
-        return sumArray;
+        return c;
     }
 
     public int[] makeSumOpg7(int[] a, int[] b) {
         int shortest = Math.min(a.length, b.length);
         int longest = Math.max(a.length, b.length);
-        int[] sumArray = new int[longest];
+        int[] c = new int[longest];
 
         for (int i = 0; i < longest; i++) {
             if (i < shortest) {
-                sumArray[i] = a[i] + b[i];
+                c[i] = a[i] + b[i];
             } else {
                 if (a.length == longest) {
-                    sumArray[i] = a[i];
+                    c[i] = a[i];
                 } else {
-                    sumArray[i] = b[i];
+                    c[i] = b[i];
                 }
             }
         }
 
-        return sumArray;
+        return c;
     }
 
     public int[] makeSumOpg7Optimized(int[] a, int[] b) {
         int longest = Math.max(a.length, b.length);
-        int[] sumArray = new int[longest];
+        int[] c = new int[longest];
 
         for (int i = 0; i < longest; i++) {
-            if (i < a.length) { sumArray[i] += a[i]; }
-            if (i < b.length) { sumArray[i] += b[i]; }
+            if (i < a.length) {
+                c[i] += a[i];
+            }
+            if (i < b.length) {
+                c[i] += b[i];
+            }
         }
 
-        return sumArray;
+        return c;
     }
 
     public boolean hasUneven(int[] t) {
         for (int n : t) {
-            if (n % 2 != 0) { return true; }
+            if (n % 2 != 0) {
+                return true;
+            }
         }
 
         return false;
     }
 
+    public int[] switchFirstAndLast(int[] t) {
+        if (t.length < 2) { return t; }
+
+        int[] r = t.clone();
+        int first = r[0];
+        r[0] = r[r.length - 1];
+        r[r.length - 1] = first;
+
+        return r;
+    }
+
+    public int[] pushElements(int[] t) {
+        int[] r = t.clone();
+        int last = t[t.length - 1];
+        for (int i = 0; i < t.length; i++) {
+            int tempLast = t[i];
+            r[i] = last;
+            last = tempLast;
+        }
+        return r;
+    }
+
+    public int[] replaceEvenWithZero(int[] t) {
+        int[] r = t.clone();
+
+        for (int i = 0; i < r.length; i++) {
+            int n = r[i];
+            if (n % 2 == 0) {
+                r[i] = 0;
+            }
+        }
+        return r;
+    }
+
+    public int findSecondHighest(int[] t) {
+        int highest = 0;
+        int secondHighest = 0;
+
+        for (int n : t) {
+            if (n > highest) {
+                secondHighest = highest;
+                highest = n;
+            }
+            else if (n < highest && n > secondHighest) {
+                secondHighest = n;
+            }
+        }
+
+        return secondHighest;
+    }
+
     /**
-     *
      * @return et array med indhold [0,0,0,0,0,0,0,0,0,0]
      */
     public int[] fyldArrayA() {
         int[] result = new int[10];
         return result;
     }
-    
+
     /**
-     *
      * @return et array med indhold [2,44,-23,99,8,-5,7,10,20,30]
      */
     public int[] fyldArrayB() {
@@ -100,9 +154,8 @@ public class ArrayMethods {
         //TODO
         return result;
     }
-    
+
     /**
-     *
      * @return et array med indhold [0,1,2,3,4,5,6,7,8,9]
      */
     public int[] fyldArrayC() {
@@ -112,7 +165,6 @@ public class ArrayMethods {
     }
 
     /**
-     *
      * @return et array med indhold [2,4,6,8,10,12,14,16,18,20]
      */
     public int[] fyldArrayD() {
@@ -122,7 +174,6 @@ public class ArrayMethods {
     }
 
     /**
-     *
      * @return et array med indhold [1,4,9,16,25,36,49,64,81,100]
      */
     public int[] fyldArrayE() {
@@ -132,7 +183,6 @@ public class ArrayMethods {
     }
 
     /**
-     *
      * @return et array med indhold [0,1,0,1,0,1,0,1,0,1]
      */
     public int[] fyldArrayF() {
@@ -142,7 +192,6 @@ public class ArrayMethods {
     }
 
     /**
-     *
      * @return et array med indhold [0,1,2,3,4,0,1,2,3,4]
      */
     public int[] fyldArrayG() {
@@ -150,7 +199,7 @@ public class ArrayMethods {
         //TODO
         return result;
     }
-    
+
     public int findMax(int[] tabel) {
         int max = -1;
         for (int i = 0; i < tabel.length; i++) {
