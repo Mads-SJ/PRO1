@@ -33,10 +33,10 @@ public class TheaterFloor {
 	 */
 	public boolean buySeat(int price) {
 		int i = 0;
-		int j = 0;
 		boolean found = false;
 
 		while (i < seats.length && !found) {
+			int j = 0;
 			while (j < seats[0].length && !found) {
 				if (seats[i][j] == price) {
 					seats[i][j] = 0;
@@ -62,7 +62,10 @@ public class TheaterFloor {
 		for (int i = 0; i < seats.length; i++) {
 			System.out.print("Række " + (i + 1) + ": ");
 			for (int j = 0; j < seats[0].length; j++) {
-				int price = seats[i][j];
+				String price = "" + seats[i][j];
+				if (price.equals("0")) {
+					price = "--";
+				}
 				if (j == seats.length) {
 					System.out.println(price);
 				}
