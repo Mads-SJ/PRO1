@@ -101,5 +101,17 @@ public class ArrayApp {
         System.out.println(metode.findSecondHighest(t));
         int[] t2 = {1, 2, 3, 4, 6, 5};
         System.out.println(metode.findSecondHighest(t2));
+
+        // 5
+        System.out.println();
+        System.out.println(metode.isArrayIncreasing(t));
+        System.out.println(metode.isArrayIncreasing(t2));
+
+        // 6
+        int[] tDuplicates = {1, 2, 2};
+        System.out.println();
+        System.out.println(metode.hasDuplicates(t));
+        System.out.println(metode.hasDuplicates(tDuplicates));
+
     }
 }

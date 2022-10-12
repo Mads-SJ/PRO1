@@ -1,7 +1,6 @@
 package opg3;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class Team {
     private String name;
@@ -22,7 +21,7 @@ public class Team {
         }
     }
 
-    public double getAverageAge() {
+    public double averageAge() {
         double avg = 0.0;
         int sum = players.stream()
                 .mapToInt(Player::getAge)
@@ -34,7 +33,7 @@ public class Team {
         return avg;
     }
 
-    public int getTotalScore() {
+    public int totalScore() {
         return players.stream()
                 .mapToInt(Player::getScore)
                 .sum();
@@ -67,7 +66,6 @@ public class Team {
                 return player.getName();
             }
         }
-
         return "Not found";
     }
 }

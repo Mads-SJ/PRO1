@@ -1,5 +1,8 @@
 package modelarray;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class ArrayMethods {
     public void printArray(int[] tabel) {
         System.out.print("{");
@@ -73,7 +76,6 @@ public class ArrayMethods {
                 c[i] += b[i];
             }
         }
-
         return c;
     }
 
@@ -83,12 +85,13 @@ public class ArrayMethods {
                 return true;
             }
         }
-
         return false;
     }
 
     public int[] switchFirstAndLast(int[] t) {
-        if (t.length < 2) { return t; }
+        if (t.length < 2) {
+            return t;
+        }
 
         int[] r = t.clone();
         int first = r[0];
@@ -101,11 +104,10 @@ public class ArrayMethods {
     public int[] pushElements(int[] t) {
         int[] r = t.clone();
         int last = t[t.length - 1];
-        for (int i = 0; i < t.length; i++) {
-            int tempLast = t[i];
-            r[i] = last;
-            last = tempLast;
+        for (int i = t.length - 1; i > 0; i--) {
+            r[i] = r[i - 1];
         }
+        r[0] = last;
         return r;
     }
 
@@ -129,13 +131,32 @@ public class ArrayMethods {
             if (n > highest) {
                 secondHighest = highest;
                 highest = n;
-            }
-            else if (n < highest && n > secondHighest) {
+            } else if (n < highest && n > secondHighest) {
                 secondHighest = n;
             }
         }
-
         return secondHighest;
+    }
+
+    public boolean isArrayIncreasing(int[] t) {
+        for (int i = 0; i < t.length - 1; i++) {
+            if (t[i] > t[i + 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean hasDuplicates(int[] t) {
+        Set<Integer> set = new HashSet<>();
+
+        for (int n : t) {
+            boolean isDuplicate = !set.add(n);
+            if (isDuplicate) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

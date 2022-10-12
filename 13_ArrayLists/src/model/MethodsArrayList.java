@@ -88,7 +88,7 @@ public class MethodsArrayList {
 
     public void swapEvenWithZeros(ArrayList<Integer> list) {
         for (int i = 0; i < list.size(); i++) {
-            if (i % 2 == 0) {
+            if (list.get(i) % 2 == 0) {
                 list.set(i, 0);
             }
         }
@@ -96,13 +96,11 @@ public class MethodsArrayList {
 
     public ArrayList<Integer> aEvenList(ArrayList<Integer> list) {
         ArrayList<Integer> evenList = new ArrayList<>();
-
         for (int n : list) {
             if (n % 2 == 0) {
                 evenList.add(n);
             }
         }
-
         return evenList;
     }
 }
