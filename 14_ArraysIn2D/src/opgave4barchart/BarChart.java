@@ -7,7 +7,7 @@ public class BarChart {
     private ArrayList<Integer> numbers = new ArrayList<>();
     private ArrayList<String> headers = new ArrayList<>();
 
-    public ArrayList<Integer> readValues() {
+    public void readValues() {
         System.out.println("Indtast nogle positive tal.  " + "Indtast et negativt tal for at afslutte: ");
 
         Scanner in = new Scanner(System.in);
@@ -19,7 +19,6 @@ public class BarChart {
             headers.add(s);
             numbers.add(n);
         }
-        return numbers;
     }
 
     /**
@@ -68,14 +67,8 @@ public class BarChart {
             System.out.println(bar);
         }
 
-//        for (int n : list) {
-//            for (int i = 0; i < n; i++) {
-//                if (i == n - 1) {
-//                    System.out.println("*");
-//                } else {
-//                System.out.print("*");
-//                }
-//            }
+//        for (int n : numbers) {
+//            System.out.println("*".repeat(n));
 //        }
     }
 }
