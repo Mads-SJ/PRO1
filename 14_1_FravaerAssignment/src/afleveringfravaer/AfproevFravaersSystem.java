@@ -3,9 +3,13 @@ package afleveringfravaer;
 public class AfproevFravaersSystem {
 
     public static void main(String[] args) {
-        int[][] fravaer22S = { { 2, 0, 0, 0, 3, 1, 0, 2, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-                { 2, 0, 0, 0, 3, 1, 0, 2, 0, 0, 0, 0 }, { 1, 2, 1, 2, 1, 2, 0, 2, 0, 0, 4, 0 },
-                { 5, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0 } };
+        int[][] fravaer22S = {
+                { 2, 0, 0, 0, 3, 1, 0, 2, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 2, 0, 0, 0, 3, 1, 0, 2, 0, 0, 0, 0 },
+                { 1, 2, 1, 2, 1, 2, 0, 2, 0, 0, 4, 0 },
+                { 5, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0 }
+        };
 
         FravaersSystem fraværsSystem = new FravaersSystem();
 
