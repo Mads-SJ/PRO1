@@ -17,9 +17,8 @@ public class TheaterFloor {
 	 */
 
 	public boolean buySeat(int row, int seat) {
-		int price = seats[row][seat];
-		if (price == 0) { return false; }
-		seats[row][seat] = 0;
+		if (seats[row - 1][seat - 1] == 0) { return false; }
+		seats[row - 1][seat - 1] = 0;
 		return true;
 	}
 
@@ -33,21 +32,20 @@ public class TheaterFloor {
 	 */
 	public boolean buySeat(int price) {
 		int i = 0;
-		boolean found = false;
+		boolean seatBought = false;
 
-		while (i < seats.length && !found) {
+		while (i < seats.length && !seatBought) {
 			int j = 0;
-			while (j < seats[0].length && !found) {
+			while (j < seats[i].length && !seatBought) {
 				if (seats[i][j] == price) {
 					seats[i][j] = 0;
-					found = true;
+					seatBought = true;
 				}
 				j++;
 			}
 			i++;
 		}
-		return found;
-
+		return seatBought;
 	}
 
 	public void printTheaterFloor() {

@@ -1,6 +1,7 @@
-package guidemo_textarea;
+package opg3;
 
 import javafx.application.Application;
+
 public class App {
 
 	public static void main(String[] args) {
