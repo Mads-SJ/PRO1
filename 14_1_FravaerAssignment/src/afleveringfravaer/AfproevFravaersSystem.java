@@ -21,13 +21,13 @@ public class AfproevFravaersSystem {
         // OPG 2
         System.out.println("OPG 2:");
         int samletFravaerElev1 = fraværsSystem.samletFravaer(fravaer22S, 1);
-        System.out.println("Elev 1 samlet fravær - forventet: 8, fik: " + samletFravaerElev1);
+        System.out.println("Elev 1 samlet fravær - forventet: " + (2 + 3 + 1 + 2) + ", fik: " + samletFravaerElev1);
         System.out.println();
 
         // OPG 3
         System.out.println("OPG 3:");
         double gennemsnitligFravaerElev1 = fraværsSystem.gennemsnit(fravaer22S, 1);
-        System.out.println("Elev 1 gennemsnitlig fravær - forventet: 0,66.., fik: " + gennemsnitligFravaerElev1);
+        System.out.println("Elev 1 gennemsnitlig fravær - forventet: " + (8.0 / 12.0) + ", fik: " + gennemsnitligFravaerElev1);
         System.out.println();
 
         // OPG 4

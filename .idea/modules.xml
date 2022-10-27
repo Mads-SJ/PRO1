@@ -14,10 +14,12 @@
       <module fileurl="file://$PROJECT_DIR$/10&amp;11_DieProject/10&amp;11_DieProject.iml" filepath="$PROJECT_DIR$/10&amp;11_DieProject/10&amp;11_DieProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/12_Arrays/12_Arrays.iml" filepath="$PROJECT_DIR$/12_Arrays/12_Arrays.iml" />
       <module fileurl="file://$PROJECT_DIR$/13_ArrayLists/13_ArrayLists.iml" filepath="$PROJECT_DIR$/13_ArrayLists/13_ArrayLists.iml" />
+      <module fileurl="file://$PROJECT_DIR$/14_0_ArraysIn2D/14_0_ArraysIn2D.iml" filepath="$PROJECT_DIR$/14_0_ArraysIn2D/14_0_ArraysIn2D.iml" />
       <module fileurl="file://$PROJECT_DIR$/14_1_FravaerAssignment/14_1_FravaerAssignment.iml" filepath="$PROJECT_DIR$/14_1_FravaerAssignment/14_1_FravaerAssignment.iml" />
-      <module fileurl="file://$PROJECT_DIR$/14_ArraysIn2D/14_ArraysIn2D.iml" filepath="$PROJECT_DIR$/14_ArraysIn2D/14_ArraysIn2D.iml" />
       <module fileurl="file://$PROJECT_DIR$/15_GUI_p1/15_GUI_p1.iml" filepath="$PROJECT_DIR$/15_GUI_p1/15_GUI_p1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/GUI_p2/GUI_p2.iml" filepath="$PROJECT_DIR$/GUI_p2/GUI_p2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/16_0_GUI_p2/16_0_GUI_p2.iml" filepath="$PROJECT_DIR$/16_0_GUI_p2/16_0_GUI_p2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/16_1_Test/16_1_Test.iml" filepath="$PROJECT_DIR$/16_1_Test/16_1_Test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/17_Specifications/17_Specifications.iml" filepath="$PROJECT_DIR$/17_Specifications/17_Specifications.iml" />
       <module fileurl="file://$PROJECT_DIR$/PRO1.iml" filepath="$PROJECT_DIR$/PRO1.iml" />
     </modules>
   </component>

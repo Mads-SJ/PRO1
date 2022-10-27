@@ -22,9 +22,9 @@ public class Gui extends Application {
 
 	// -------------------------------------------------------------------------
 
-	private final TextField txfName1 = new TextField();;
-	private final TextField txfName2 = new TextField();;
-	private final TextField txfNameCombined = new TextField();;
+	private final TextField txfName1 = new TextField();
+	private final TextField txfName2 = new TextField();
+	private final TextField txfNameCombined = new TextField();
 
 	private void initContent(GridPane pane) {
 		// show or hide grid lines
