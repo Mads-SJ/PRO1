@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Yatzy {
@@ -22,8 +23,7 @@ public class Yatzy {
 	 * Returns the 5 face values of the dice.
 	 */
 	public int[] getValues() {
-		// TODO
-		return null;
+		return values;
 	}
 
 	/**
@@ -32,22 +32,21 @@ public class Yatzy {
 	 * therefore has package visibility.
 	 */
 	void setValues(int[] values) {
-		// TODO
+		this.values = values;
 	}
 
 	/**
 	 * Returns the number of times the 5 dice has been thrown.
 	 */
 	public int getThrowCount() {
-		// TODO
-		return 0;
+		return throwCount;
 	}
 
 	/**
 	 * Resets the throw count.
 	 */
 	public void resetThrowCount() {
-		// TODO
+		throwCount = 0;
 	}
 
 	/**
@@ -55,7 +54,12 @@ public class Yatzy {
 	 * boolean values.
 	 */
 	public void throwDice(boolean[] holds) {
-		// TODO
+		for (int i = 0; i < holds.length; i++) {
+			if (!holds[i]) {
+				values[i] = random.nextInt(5) + 1;
+			}
+		}
+		throwCount++;
 	}
 
 	// -------------------------------------------------------------------------
@@ -90,8 +94,11 @@ public class Yatzy {
 	// <= 6.
 	// Index 0 is not used.
 	private int[] calcCounts() {
-		// TODO
-		return null;
+		int[] counts = new int[7];
+		for (int value : values) {
+			counts[value] += 1;
+		}
+		return counts;
 	}
 
 	/**
@@ -99,8 +106,8 @@ public class Yatzy {
 	 * has the given face value. Pre: 1 <= value <= 6;
 	 */
 	public int sameValuePoints(int value) {
-		// TODO
-		return 0;
+		int[] counts = calcCounts();
+		return counts[value] * value;
 	}
 
 	/**
@@ -108,8 +115,22 @@ public class Yatzy {
 	 * Returns 0, if there aren't 2 dice with the same face value.
 	 */
 	public int onePairPoints() {
-		// TODO
-		return 0;
+//		int[] counts = calcCounts();
+//		int highestPoints = 0;
+//
+//		for (int i = 1; i < counts.length; i++) {
+//			int points = i * 2;
+//			if (counts[i] >= 2 && points > highestPoints) { //TODO: unødvendigt check (points vil altid være større)
+//				highestPoints = points;
+//			}
+//		}
+//		return highestPoints;
+		ArrayList<Integer> pairIndices = getPairIndices();
+		int size = pairIndices.size();
+		if (size < 1) {
+			return 0;
+		}
+		return pairIndices.get(size - 1) * 2;
 	}
 
 	/**
@@ -118,8 +139,43 @@ public class Yatzy {
 	 * with a different face value.
 	 */
 	public int twoPairPoints() {
-		// TODO
-		return 0;
+//		int highestPoints = onePairPoints();
+//
+//		if (highestPoints == 0) { return 0; }
+//
+//		int[] counts = calcCounts();
+//		int secondHighestPoints = 0;
+//
+//		for (int i = 1; i < highestPoints / 2; i++) {
+//			int points = i * 2;
+//			if (counts[i] >= 2 && points > secondHighestPoints) {
+//				secondHighestPoints = points;
+//			}
+//		}
+//
+//		if (secondHighestPoints == 0) { return 0; }
+//
+//		return highestPoints + secondHighestPoints;
+
+		ArrayList<Integer> pairIndices = getPairIndices();
+		int size = pairIndices.size();
+		if (size < 2) { return 0; }
+
+		return pairIndices.get(size - 1) * 2 + pairIndices.get(size - 2) * 2;
+	}
+
+	// Returns an array list of integers containing indices of pairs.
+	private ArrayList<Integer> getPairIndices() {
+		int[] counts = calcCounts();
+		ArrayList<Integer> pairIndices = new ArrayList<>();
+
+		for (int i = 1; i < counts.length; i++) {
+			if (counts[i] >= 2) {
+				pairIndices.add(i);
+			}
+		}
+
+		return pairIndices;
 	}
 
 	/**
@@ -127,8 +183,7 @@ public class Yatzy {
 	 * the same face value.
 	 */
 	public int threeSamePoints() {
-		// TODO
-		return 0;
+		return nOfAKindPoints(3);
 	}
 
 	/**
@@ -136,8 +191,20 @@ public class Yatzy {
 	 * the same face value.
 	 */
 	public int fourSamePoints() {
-		// TODO
-		return 0;
+		return nOfAKindPoints(4);
+	}
+
+	// Returns points for n of a kind.
+	private int nOfAKindPoints(int n) {
+		int points = 0;
+		int[] counts = calcCounts();
+
+		for (int i = 1; i < counts.length; i++) {
+			if (counts[i] >= n) {
+				points =  i * n;
+			}
+		}
+		return points;
 	}
 
 	/**
@@ -145,8 +212,15 @@ public class Yatzy {
 	 * face value and 2 dice a different face value.
 	 */
 	public int fullHousePoints() {
-		// TODO
-		return 0;
+		ArrayList<Integer> pairIndices = getPairIndices();
+		if (pairIndices.size() != 2) { return 0; }
+
+		int[] counts = calcCounts();
+		int firstValue = counts[pairIndices.get(0)];
+		int secondValue = counts[pairIndices.get(1)];
+		if (firstValue != 2 && firstValue != 3) { return 0; }
+
+		return firstValue * pairIndices.get(0) + secondValue * pairIndices.get(1);
 	}
 
 	/**
@@ -154,8 +228,8 @@ public class Yatzy {
 	 * 1,2,3,4,5.
 	 */
 	public int smallStraightPoints() {
-		// TODO
-		return 0;
+		if (!isStraightInInterval(1, 5)) { return 0; }
+		return 15;
 	}
 
 	/**
@@ -163,16 +237,37 @@ public class Yatzy {
 	 * 2,3,4,5,6.
 	 */
 	public int largeStraightPoints() {
-		// TODO
-		return 0;
+		if (!isStraightInInterval(2, 6)) { return 0; }
+		return 20;
+	}
+
+	// Returns true if there is a straight in the given interval, or else false.
+	private boolean isStraightInInterval(int start, int end) {
+		int[] counts = calcCounts();
+		int i = start;
+		boolean straight = true;
+
+		while (i <= end && straight) {
+			if (!(counts[i] == 1)) {
+				straight = false;
+			}
+			i++;
+		}
+
+		return straight;
 	}
 
 	/**
 	 * Returns points for chance.
 	 */
 	public int chancePoints() {
-		// TODO
-		return 0;
+		int points = 0;
+
+		for (int value : values) {
+			points += value;
+		}
+
+		return points;
 	}
 
 	/**
@@ -180,8 +275,20 @@ public class Yatzy {
 	 * face value.
 	 */
 	public int yatzyPoints() {
-		// TODO
-		return 0;
+		int[] counts = calcCounts();
+		int points = 0;
+		boolean yatzy = false;
+
+		int i = 1;
+		while (i < counts.length && !yatzy) {
+			if (counts[i] == 5) {
+				points = 50;
+				yatzy = true;
+			}
+			i++;
+		}
+
+		return points;
 	}
 
 }
