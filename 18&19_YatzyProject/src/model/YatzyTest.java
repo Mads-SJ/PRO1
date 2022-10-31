@@ -133,6 +133,11 @@ public class YatzyTest {
         int result3 = yatzy.fullHousePoints();
         assertEquals(0, result3);
 
+        int[] values4 = {2, 2, 3, 3, 5};
+        yatzy.setValues(values4);
+        int result4 = yatzy.fullHousePoints();
+        assertEquals(0, result4);
+
     }
 
     @Test

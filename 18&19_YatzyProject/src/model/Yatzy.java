@@ -56,7 +56,7 @@ public class Yatzy {
 	public void throwDice(boolean[] holds) {
 		for (int i = 0; i < holds.length; i++) {
 			if (!holds[i]) {
-				values[i] = random.nextInt(5) + 1;
+				values[i] = random.nextInt(6) + 1;
 			}
 		}
 		throwCount++;
@@ -115,16 +115,6 @@ public class Yatzy {
 	 * Returns 0, if there aren't 2 dice with the same face value.
 	 */
 	public int onePairPoints() {
-//		int[] counts = calcCounts();
-//		int highestPoints = 0;
-//
-//		for (int i = 1; i < counts.length; i++) {
-//			int points = i * 2;
-//			if (counts[i] >= 2 && points > highestPoints) { //TODO: unødvendigt check (points vil altid være større)
-//				highestPoints = points;
-//			}
-//		}
-//		return highestPoints;
 		ArrayList<Integer> pairIndices = getPairIndices();
 		int size = pairIndices.size();
 		if (size < 1) {
@@ -139,24 +129,6 @@ public class Yatzy {
 	 * with a different face value.
 	 */
 	public int twoPairPoints() {
-//		int highestPoints = onePairPoints();
-//
-//		if (highestPoints == 0) { return 0; }
-//
-//		int[] counts = calcCounts();
-//		int secondHighestPoints = 0;
-//
-//		for (int i = 1; i < highestPoints / 2; i++) {
-//			int points = i * 2;
-//			if (counts[i] >= 2 && points > secondHighestPoints) {
-//				secondHighestPoints = points;
-//			}
-//		}
-//
-//		if (secondHighestPoints == 0) { return 0; }
-//
-//		return highestPoints + secondHighestPoints;
-
 		ArrayList<Integer> pairIndices = getPairIndices();
 		int size = pairIndices.size();
 		if (size < 2) { return 0; }
@@ -212,15 +184,25 @@ public class Yatzy {
 	 * face value and 2 dice a different face value.
 	 */
 	public int fullHousePoints() {
-		ArrayList<Integer> pairIndices = getPairIndices();
-		if (pairIndices.size() != 2) { return 0; }
-
 		int[] counts = calcCounts();
-		int firstValue = counts[pairIndices.get(0)];
-		int secondValue = counts[pairIndices.get(1)];
-		if (firstValue != 2 && firstValue != 3) { return 0; }
+		int points = 0;
+		boolean fullHouse = true;
+		boolean hasTriple = false;
 
-		return firstValue * pairIndices.get(0) + secondValue * pairIndices.get(1);
+		int i = 1;
+		while (i < counts.length && fullHouse) {
+			if (counts[i] != 2 && counts[i] != 3 && counts[i] > 0) {
+				fullHouse = false;
+			} else {
+				if (counts[i] == 3) {
+					hasTriple = true;
+				}
+				points += counts[i] * i;
+			}
+			i++;
+		}
+
+		return hasTriple ? points : 0;
 	}
 
 	/**
@@ -244,9 +226,9 @@ public class Yatzy {
 	// Returns true if there is a straight in the given interval, or else false.
 	private boolean isStraightInInterval(int start, int end) {
 		int[] counts = calcCounts();
-		int i = start;
 		boolean straight = true;
 
+		int i = start;
 		while (i <= end && straight) {
 			if (!(counts[i] == 1)) {
 				straight = false;
