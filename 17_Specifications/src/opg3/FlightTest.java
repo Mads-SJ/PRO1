@@ -13,9 +13,9 @@ public class FlightTest {
         flight.createPassenger("Jennifer", 65);
 
         flight.setDepartDate(LocalDateTime.of(2022,12,24,10,15));
-        flight.setArrivalDate(LocalDateTime.of(2022,12,25,8,0));
+        flight.setArrivalDate(LocalDateTime.of(2022,12,24,12,0));
 
-        System.out.println(flight.AverageAgeOfPassengers());
+        System.out.println(flight.averageAgeOfPassengers());
         System.out.println(flight.flightDurationInHours());
         System.out.println(flight.midnightFlight());
     }

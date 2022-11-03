@@ -14,7 +14,7 @@ public class BankAccount {
      * Pre: initialBalance >= 0
      */
     public BankAccount(double initialBalance) {
-        noOfAccounts++;
+        BankAccount.noOfAccounts++;
         id = BankAccount.noOfAccounts;
         balance = initialBalance;
     }

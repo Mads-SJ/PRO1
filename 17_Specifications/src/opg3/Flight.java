@@ -12,7 +12,7 @@ public class Flight {
     private String destination;
     private LocalDateTime departDate;
     private LocalDateTime arrivalDate;
-    private ArrayList<Passenger> passengers = new ArrayList<Passenger>();
+    private ArrayList<Passenger> passengers = new ArrayList<>();
     
     /**
      * Constructor that creates a flight for an airline.
@@ -113,10 +113,6 @@ public class Flight {
         
         long hours = ChronoUnit.HOURS.between(departDate, arrivalDate);
         long minutes = ChronoUnit.MINUTES.between(departDate.plusHours(hours), arrivalDate);
-        // Hint:
-        // You can use the following to get hours between two LocalDates:
-        //        ChronoUnit.HOURS.between(startDate, endDate)
-        // ...and ChronoUnit.MINUTES for minutes...
         
         return hours + minutes / 60.0;
     }
@@ -127,15 +123,16 @@ public class Flight {
      * @return true if midnight is included in the flight period, otherwise false.
      */
     public boolean midnightFlight() {
-        LocalDateTime midnight = LocalDateTime.of(
-                departDate.getYear(),
-                departDate.getMonth(),
-                departDate.getDayOfMonth(),
-                23,
-                59,
-                59
-        );
-        return midnight.isBefore(arrivalDate);
+//        LocalDateTime midnight = LocalDateTime.of(
+//                departDate.getYear(),
+//                departDate.getMonth(),
+//                departDate.getDayOfMonth(),
+//                23,
+//                59,
+//                59
+//        );
+//        return midnight.isBefore(arrivalDate);
+        return departDate.getDayOfMonth() != arrivalDate.getDayOfMonth();
     }
     
     /**
@@ -143,7 +140,7 @@ public class Flight {
      * Precondition: there must exists passengers on this flight
      * @return average age of passengers
      */
-    public double AverageAgeOfPassengers() {
+    public double averageAgeOfPassengers() {
         int total = 0;
 
         for (Passenger p : passengers) {
