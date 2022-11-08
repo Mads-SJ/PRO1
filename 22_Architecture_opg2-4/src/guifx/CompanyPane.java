@@ -97,6 +97,14 @@ public class CompanyPane extends GridPane {
 		hbxButtons.getChildren().add(btnDelete);
 		btnDelete.setOnAction(event -> this.deleteAction());
 
+		Button btnCreateCustomer = new Button("Create Customer");
+		hbxButtons.getChildren().add(btnCreateCustomer);
+		btnCreateCustomer.setOnAction(event -> this.createCustomerAction());
+
+		Button btnAddCustomers = new Button("Add Customers");
+		hbxButtons.getChildren().add(btnAddCustomers);
+		btnAddCustomers.setOnAction(event -> this.addCustomerAction());
+
 		if (lvwCompanies.getItems().size() > 0) {
 			lvwCompanies.getSelectionModel().select(0);
 		}
@@ -154,6 +162,20 @@ public class CompanyPane extends GridPane {
 				alert.show();
 			}
 		}
+	}
+
+	private void createCustomerAction() {
+		CustomerWindow dia = new CustomerWindow("Create customer");
+		dia.showAndWait();
+
+		updateControls();
+	}
+
+	private void addCustomerAction() {
+		AddCustomerWindow dia = new AddCustomerWindow("Add customers");
+		dia.showAndWait();
+
+		updateControls();
 	}
 
 	// -------------------------------------------------------------------------

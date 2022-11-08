@@ -116,6 +116,7 @@ public class Controller {
 
     public static Customer createCustomer(String name) {
         Customer customer = new Customer(name);
+        Storage.addCustomer(customer);
         return customer;
     }
 
@@ -127,6 +128,10 @@ public class Controller {
         if (company != null && customer != null){
             company.removeCustomer(customer);
         }
+    }
+
+    public static ArrayList<Customer> getCustomers() {
+        return Storage.getCustomers();
     }
 
     // -------------------------------------------------------------------------
