@@ -59,4 +59,8 @@ public class Plads {
 
         return pris;
     }
+
+    public String toString() {
+        return "Plads " + nr + ", " + område;
+    }
 }

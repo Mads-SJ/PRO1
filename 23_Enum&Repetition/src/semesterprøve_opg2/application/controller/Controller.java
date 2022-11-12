@@ -7,6 +7,7 @@ import semesterprøve_opg2.application.model.Reservation;
 import semesterprøve_opg2.storage.Storage;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Controller {
     public static Arrangement createArrangement(String navn, boolean offentlig) {
@@ -35,13 +36,17 @@ public class Controller {
         return plads;
     }
 
+    public static ArrayList<Plads> getPladser() {
+        return Storage.getPladser();
+    }
+
     public static void initStorage() {
         Plads p1 = createPlads(1, Område.TURNERING);
-        Plads p2 = createPlads(1, Område.TURNERING);
-        Plads p3 = createPlads(1, Område.STANDARD);
-        Plads p4 = createPlads(1, Område.STANDARD);
-        Plads p5 = createPlads(1, Område.BØRNE);
-        Plads p6 = createPlads(1, Område.VIP);
+        Plads p2 = createPlads(2, Område.TURNERING);
+        Plads p3 = createPlads(3, Område.STANDARD);
+        Plads p4 = createPlads(4, Område.STANDARD);
+        Plads p5 = createPlads(5, Område.BØRNE);
+        Plads p6 = createPlads(6, Område.VIP);
 
         Arrangement a1 = new Arrangement("Dota 2 tournament", true);
         Arrangement a2 = new Arrangement("CS GO tournament", false);
