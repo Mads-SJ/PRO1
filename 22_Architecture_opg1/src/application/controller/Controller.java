@@ -132,9 +132,7 @@ public class Controller {
     }
 
     public static void init() {
-
         initStorage();
-
     }
 
 }
