@@ -60,4 +60,9 @@ public class Hotel {
             services.add(service);
         }
     }
+
+    @Override
+    public String toString() {
+        return navn;
+    }
 }
