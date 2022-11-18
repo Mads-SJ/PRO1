@@ -46,4 +46,8 @@ public class Udflugt {
             ledsager.addUdflugt(this);
         }
     }
+
+    public String toString() {
+        return navn + " " + "(" + pris + " kr. - Afgang:  " + dato + " - Inkl. Frokost: " + (inklFrokost ? "Ja" : "Nej") + " " + ")";
+    }
 }

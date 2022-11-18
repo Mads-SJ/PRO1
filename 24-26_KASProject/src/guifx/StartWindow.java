@@ -42,37 +42,22 @@ public class StartWindow extends Application {
 	private void initTabPane(TabPane tabPane) {
 		tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
 
-		Tab tabKonferencer = new Tab("Konferencer");
-		tabPane.getTabs().add(tabKonferencer);
-		KonferencePane konferencePane = new KonferencePane();
-		tabKonferencer.setContent(konferencePane);
+		Tab tabTilmeldinger = new Tab("Tilmeldinger");
+		tabPane.getTabs().add(tabTilmeldinger);
+		TilmeldingsPane tilmeldingsPane = new TilmeldingsPane();
+		tabTilmeldinger.setContent(tilmeldingsPane);
 
 		Tab tabHoteller = new Tab("Hoteller");
 		tabPane.getTabs().add(tabHoteller);
 		HotelPane hotelPane = new HotelPane();
 		tabHoteller.setContent(hotelPane);
 
-		Tab tabTilmeldinger = new Tab("Tilmeldinger");
-		tabPane.getTabs().add(tabTilmeldinger);
-		TilmeldingsPane tilmeldingsPane = new TilmeldingsPane();
-		tabTilmeldinger.setContent(tilmeldingsPane);
-		//tabKonferencer.setOnSelectionChanged(event -> );
+		Tab tabOversigter = new Tab("Oversigter");
+		tabPane.getTabs().add(tabOversigter);
+		OversigtPane oversigtPane = new OversigtPane();
+		tabOversigter.setContent(oversigtPane);
 
-//		Tab tabCompanies = new Tab("Companies");
-//		tabPane.getTabs().add(tabCompanies);
-//
-//		CompanyPane companyPane = new CompanyPane();
-//		tabCompanies.setContent(companyPane);
-//		tabCompanies.setOnSelectionChanged(event -> companyPane.updateControls());
-//
-//		Tab tabEmployees = new Tab("Employees");
-//		tabPane.getTabs().add(tabEmployees);
-//
-//		EmployeePane employeePane = new EmployeePane();
-//		tabEmployees.setContent(employeePane);
-//		tabEmployees.setOnSelectionChanged(event -> employeePane.updateControls());
-
-
+		tabOversigter.setOnSelectionChanged(event -> oversigtPane.updateTextAreas());
 	}
 
 }

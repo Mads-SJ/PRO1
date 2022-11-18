@@ -61,8 +61,7 @@ public class Hotel {
         }
     }
 
-    @Override
     public String toString() {
-        return navn;
+        return navn + " " + "(" + getEnkeltDagspris() + "/" + getDobbeltDagspris() + ")";
     }
 }

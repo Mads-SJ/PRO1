@@ -96,4 +96,8 @@ public class Konference {
             hoteller.add(hotel);
         }
     }
+
+    public String toString() {
+        return navn + " " + "(" + dagspris + " kr.)";
+    }
 }

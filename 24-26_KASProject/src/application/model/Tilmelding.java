@@ -91,9 +91,13 @@ public class Tilmelding {
         return ledsager;
     }
 
+    public int antalDage() {
+        return ankomstDato.until(afrejseDato).getDays() + 1;
+    }
+
     public double samletPris() {
         double samletPris = 0.0;
-        int dage = ankomstDato.until(afrejseDato).getDays() + 1;
+        int dage = antalDage();
 
         if (!erForedragsholder) {
             samletPris += konference.getDagspris() * dage;

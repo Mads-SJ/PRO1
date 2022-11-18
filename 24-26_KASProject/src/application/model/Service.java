@@ -16,4 +16,9 @@ public class Service {
     public double getPris() {
         return pris;
     }
+
+    @Override
+    public String toString() {
+        return navn + " (" + pris + " kr.)";
+    }
 }

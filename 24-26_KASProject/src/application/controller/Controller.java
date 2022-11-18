@@ -5,7 +5,9 @@ import storage.Storage;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
     public static Konference createKonference(
@@ -98,6 +100,12 @@ public class Controller {
         ledsager.addUdflugt(udflugt);
     }
 
+    public static void addUdflugterToLedsager(List<Udflugt> udflugter, Ledsager ledsager) {
+        for (Udflugt u : udflugter) {
+            addUdflugtToLedsager(u, ledsager);
+        }
+    }
+
     public static void setHotelForTilmelding(Hotel hotel, Tilmelding tilmelding) {
         tilmelding.setHotel(hotel);
     }
@@ -106,12 +114,166 @@ public class Controller {
         tilmelding.addService(service);
     }
 
+    public static void addServicesToTilmelding(List<Service> services, Tilmelding tilmelding) {
+        for (Service s : services) {
+            addServiceToTilmelding(s, tilmelding);
+        }
+    }
+
     public static ArrayList<Konference> getKonferencer() {
         return Storage.getKonferencer();
     }
 
     public static ArrayList<Hotel> getHoteller() {
         return Storage.getHoteller();
+    }
+
+    public static String getKonferenceOversigt() {
+        StringBuilder sbKonferenceOversigt = new StringBuilder();
+
+        for (Konference k : getKonferencer()) {
+            sbKonferenceOversigt.append("=================================\n")
+                    .append("Konference: ")
+                    .append(k.getNavn())
+                    .append(" (")
+                    .append(k.getDagspris())
+                    .append(" kr.)")
+                    .append("\nFra: ")
+                    .append(k.getStartDato())
+                    .append("\nTil: ")
+                    .append(k.getSlutDato());
+
+            for (Tilmelding t : k.getTilmeldinger()) {
+                Deltager d = t.getDeltager();
+                sbKonferenceOversigt.append("\n---------------------------------------------------------\n")
+                        .append("Deltager: ")
+                        .append(d.getNavn())
+                        .append("\n")
+                        .append("Tlf: ")
+                        .append(d.getTlfNr())
+                        .append("\nAnkomst: ")
+                        .append(t.getAnkomstDato())
+                        .append("\nAfrejse: ")
+                        .append(t.getAfrejseDato())
+                        .append("\n");
+
+                if (!d.getFirmaNavn().equals("")) {
+                    sbKonferenceOversigt.append("Firma: ")
+                            .append(d.getFirmaNavn())
+                            .append("\nFirma tlf: ")
+                            .append(d.getFirmaTlfNr())
+                            .append("\n\n");
+                }
+
+                sbKonferenceOversigt.append("Foredragsholder: ")
+                        .append(t.isForedragsholder() ? "Ja" : "Nej")
+                        .append("\n\n");
+
+                Ledsager l = t.getLedsager();
+                if (l != null) {
+                    sbKonferenceOversigt.append("Ledsager: ")
+                            .append(l.getNavn())
+                            .append("\n");
+
+                    if (l.getUdflugter().size() > 0) {
+                        sbKonferenceOversigt.append("Udflugter: \n");
+                        for (Udflugt u : l.getUdflugter()) {
+                            sbKonferenceOversigt.append(" - ")
+                                    .append(u.getNavn())
+                                    .append(" (")
+                                    .append(u.getPris())
+                                    .append(" kr.)\n");
+                        }
+                    }
+                    sbKonferenceOversigt.append("\n");
+                }
+
+                Hotel h = t.getHotel();
+                if (h != null) {
+                    sbKonferenceOversigt.append("Hotel: ")
+                            .append(h.getNavn())
+                            .append("\n\n");
+                }
+
+                sbKonferenceOversigt.append("Samlet pris: ")
+                        .append(t.samletPris())
+                        .append(" kr.");
+            }
+        }
+
+        return sbKonferenceOversigt.toString();
+    }
+
+    public static String getHotelOversigt() {
+        StringBuilder sbHotelOversigt = new StringBuilder();
+
+        for (Hotel h : getHoteller()) {
+            sbHotelOversigt.append("=================================\nHotel: ")
+                    .append(h.getNavn() + " (" + h.getEnkeltDagspris() + "/" + h.getDobbeltDagspris() + ")\n");
+
+            for (Tilmelding t : h.getTilmeldinger()) {
+                Deltager d = t.getDeltager();
+                sbHotelOversigt.append("---------------------------------------------------------\n")
+                        .append(d.getNavn())
+                        .append("\n");
+
+                Ledsager l = t.getLedsager();
+                if (l != null) {
+                    sbHotelOversigt.append(l.getNavn()).append("\n");
+                }
+
+                sbHotelOversigt.append("\nOvernatninger: ")
+                        .append(t.antalDage() - 1)
+                        .append("\n");
+
+                if (t.getServices().size() > 0) {
+                    sbHotelOversigt.append("\nServices:\n");
+                }
+
+                for (Service s : t.getServices()) {
+                    sbHotelOversigt.append(" - ")
+                            .append(s)
+                            .append("\n");
+                }
+            }
+        }
+
+        return sbHotelOversigt.toString();
+    }
+
+    public static String getUdflugtOversigt() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yy HH:mm");
+        StringBuilder sbUdflugtOversigt = new StringBuilder();
+
+        for (Konference k : getKonferencer()) {
+            sbUdflugtOversigt.append("=================================\n")
+                    .append("Konference: ")
+                    .append(k.getNavn());
+
+            for (Udflugt u : k.getUdflugter()) {
+                sbUdflugtOversigt.append("\n---------------------------------------------------------\n")
+                        .append(u.getNavn())
+                        .append("\n")
+                        .append(u.getDato().format(formatter));
+                if (u.isInklFrokost()) {
+                    sbUdflugtOversigt.append("\nInkl. frokost");
+                }
+                sbUdflugtOversigt.append("\n\n");
+
+                for (Ledsager l : u.getLedsagere()) {
+
+                    Deltager d = null;
+                    for (Tilmelding t1 : k.getTilmeldinger()) {
+                        if (t1.getLedsager() == l) {
+                            d = t1.getDeltager();
+                        }
+                    }
+                    sbUdflugtOversigt.append(" - " + l.getNavn() + " (" + d.getTlfNr() + ", " + d.getNavn() + ")\n");
+                }
+            }
+        }
+
+        return sbUdflugtOversigt.toString();
     }
 
     public static void initStorage() {

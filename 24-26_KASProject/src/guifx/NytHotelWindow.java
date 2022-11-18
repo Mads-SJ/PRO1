@@ -13,17 +13,16 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class NyServiceWindow extends Stage {
-    private Service service;
+public class NytHotelWindow extends Stage {
+    TextField txfNavn, txfEnkeltPris, txfDobbeltPris, txfLokation;
     private Hotel hotel;
 
-    public NyServiceWindow(String title, Hotel hotel) {
+    public NytHotelWindow(String title) {
         this.initStyle(StageStyle.UTILITY);
         this.initModality(Modality.APPLICATION_MODAL);
         this.setResizable(false);
 
-        this.service = null;
-        this.hotel = hotel;
+        this.hotel = null;
 
         this.setTitle(title);
         GridPane pane = new GridPane();
@@ -33,22 +32,31 @@ public class NyServiceWindow extends Stage {
         this.setScene(scene);
     }
 
-    private TextField txfService = new TextField();
-    private TextField txfPris = new TextField();
-
     private void initContent(GridPane pane) {
         pane.setPadding(new Insets(10));
         pane.setHgap(10);
         pane.setVgap(10);
         pane.setGridLinesVisible(false);
 
-        Label lblService = new Label("Service");
-        pane.add(lblService,0,0);
-        pane.add(txfService, 0, 1, 2, 1);
+        Label lblNavn = new Label("Navn");
+        pane.add(lblNavn, 0, 0);
+        txfNavn = new TextField();
+        pane.add(txfNavn, 0, 1);
 
-        Label lblPris = new Label("Pris");
-        pane.add(lblPris, 0, 2);
-        pane.add(txfPris, 0, 3, 2, 1);
+        Label lblLokation = new Label("Lokation");
+        pane.add(lblLokation, 1, 0);
+        txfLokation = new TextField();
+        pane.add(txfLokation, 1, 1);
+
+        Label lblEnkeltPris = new Label("Enkeltværelse pris (pr. nat)");
+        pane.add(lblEnkeltPris, 0, 2);
+        txfEnkeltPris = new TextField();
+        pane.add(txfEnkeltPris, 0, 3);
+
+        Label lblDobbeltPris = new Label("Dobbeltværelse pris (pr. nat)");
+        pane.add(lblDobbeltPris, 1, 2);
+        txfDobbeltPris = new TextField();
+        pane.add(txfDobbeltPris, 1, 3);
 
         Button btnCancel = new Button("Annullèr");
         pane.add(btnCancel, 0, 4);
@@ -64,10 +72,13 @@ public class NyServiceWindow extends Stage {
     }
 
     private void okAction() {
-        String service = txfService.getText();
-        double pris = Double.parseDouble(txfPris.getText());
+        String navn = txfNavn.getText();
+        String lokation = txfLokation.getText();
+        double enkeltPris = Double.parseDouble(txfEnkeltPris.getText());
+        double dobbeltPris = Double.parseDouble(txfDobbeltPris.getText());
 
-        Controller.createService(service, pris, hotel);
+        Controller.createHotel(navn, enkeltPris, dobbeltPris, lokation);
+
         this.hide();
     }
 }
