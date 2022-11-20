@@ -42,7 +42,7 @@ public class StartWindow extends Application {
 	private void initTabPane(TabPane tabPane) {
 		tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
 
-		Tab tabTilmeldinger = new Tab("Tilmeldinger");
+		Tab tabTilmeldinger = new Tab("Tilmelding");
 		tabPane.getTabs().add(tabTilmeldinger);
 		TilmeldingsPane tilmeldingsPane = new TilmeldingsPane();
 		tabTilmeldinger.setContent(tilmeldingsPane);
@@ -56,6 +56,11 @@ public class StartWindow extends Application {
 		tabPane.getTabs().add(tabOversigter);
 		OversigtPane oversigtPane = new OversigtPane();
 		tabOversigter.setContent(oversigtPane);
+
+		Tab tabIndstillinger = new Tab("Indstillinger");
+		tabPane.getTabs().add(tabIndstillinger);
+		IndstillingerPane indstillingerPane = new IndstillingerPane(tabPane);
+		tabIndstillinger.setContent(indstillingerPane);
 
 		tabOversigter.setOnSelectionChanged(event -> oversigtPane.updateTextAreas());
 	}
