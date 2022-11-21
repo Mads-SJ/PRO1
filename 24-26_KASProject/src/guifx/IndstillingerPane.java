@@ -1,6 +1,5 @@
 package guifx;
 
-import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
@@ -10,7 +9,7 @@ import javafx.scene.layout.GridPane;
 
 public class IndstillingerPane extends GridPane {
     TabPane tabPane;
-    Tab tabTilmeldinger, tabHoteller, tabOversigter;
+    Tab tabHoteller, tabOversigter;
     CheckBox checkBoxAdmin;
 
     public IndstillingerPane(TabPane tabPane) {
@@ -22,7 +21,6 @@ public class IndstillingerPane extends GridPane {
         this.tabPane = tabPane;
 
         ObservableList<Tab> tabs = tabPane.getTabs();
-        this.tabTilmeldinger = tabs.get(0);
         this.tabHoteller = tabs.get(1);
         this.tabOversigter = tabs.get(2);
 
