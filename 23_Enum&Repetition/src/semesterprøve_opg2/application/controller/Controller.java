@@ -41,37 +41,37 @@ public class Controller {
     }
 
     public static void initStorage() {
-        Plads p1 = createPlads(1, Område.TURNERING);
-        Plads p2 = createPlads(2, Område.TURNERING);
-        Plads p3 = createPlads(3, Område.STANDARD);
-        Plads p4 = createPlads(4, Område.STANDARD);
-        Plads p5 = createPlads(5, Område.BØRNE);
-        Plads p6 = createPlads(6, Område.VIP);
+        Plads p1 = Controller.createPlads(1, Område.TURNERING);
+        Plads p2 = Controller.createPlads(2, Område.TURNERING);
+        Plads p3 = Controller.createPlads(3, Område.STANDARD);
+        Plads p4 = Controller.createPlads(4, Område.STANDARD);
+        Plads p5 = Controller.createPlads(5, Område.BØRNE);
+        Plads p6 = Controller.createPlads(6, Område.VIP);
 
-        Arrangement a1 = new Arrangement("Dota 2 tournament", true);
-        Arrangement a2 = new Arrangement("CS GO tournament", false);
+        Arrangement a1 = Controller.createArrangement("Dota 2 tournament", true);
+        Arrangement a2 = Controller.createArrangement("CS GO tournament", false);
 
-        Reservation r1 = new Reservation(
+        Reservation r1 = Controller.createReservation(
                 LocalDateTime.of(2019,8,12,20, 0),
                 LocalDateTime.of(2019, 8, 12, 23, 0)
         );
 
-        Reservation r2 = new Reservation(
+        Reservation r2 = Controller.createReservation(
                 LocalDateTime.of(2019,8,13,19, 0),
                 LocalDateTime.of(2019, 8, 14, 6, 0)
         );
 
-        Reservation r3 = new Reservation(
+        Reservation r3 = Controller.createReservation(
                 LocalDateTime.of(2019,8,13,19, 0),
                 LocalDateTime.of(2019, 8, 14, 6, 0)
         );
 
-        r1.addPladser(p1);
-        r1.addPladser(p2);
-        r2.addPladser(p3);
-        r2.addPladser(p4);
-        r3.addPladser(p6);
+        Controller.addPladsToReservation(p1, r1);
+        Controller.addPladsToReservation(p2, r1);
+        Controller.addPladsToReservation(p3, r2);
+        Controller.addPladsToReservation(p4, r2);
+        Controller.addPladsToReservation(p6, r3);
 
-        a1.addReservation(r1);
+        Controller.addReservationToArrangement(r1,a1);
     }
 }
