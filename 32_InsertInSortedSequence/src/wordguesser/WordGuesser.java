@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class WordGuesser {
     private final ArrayList<String> words;
-    private final ArrayList<Character> charactersGuessed;
-    private final char[] selectedWord;
+    private ArrayList<Character> charactersGuessed;
+    private char[] selectedWord;
     private int guesses;
 
     public WordGuesser() {
@@ -27,6 +27,7 @@ public class WordGuesser {
         words.add("flabbergasted");
         words.add("datamatiker");
         words.add("bogosort");
+        words.add("hangman");
     }
 
     public int getGuesses() {
@@ -70,5 +71,11 @@ public class WordGuesser {
             i++;
         }
         return finished;
+    }
+
+    public void reset() {
+        selectedWord = getRandomWord();
+        charactersGuessed.clear();
+        guesses = 0;
     }
 }

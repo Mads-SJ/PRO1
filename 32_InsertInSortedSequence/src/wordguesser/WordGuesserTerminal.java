@@ -29,11 +29,23 @@ public class WordGuesserTerminal {
 
     public void start() {
         System.out.println("Welcome to Word Guesser!");
-        System.out.println("The length of the word is " + wordGuesser.getWordLength());
-        while (!wordGuesser.finished()) {
-            guess();
+
+        boolean done = false;
+        while (!done) {
+            System.out.println("The length of the word is " + wordGuesser.getWordLength());
+            while (!wordGuesser.finished()) {
+                guess();
+            }
+            System.out.println();
+            System.out.print("You guessed " + wordGuesser.getWholeWord().toUpperCase() + " with " + wordGuesser.getGuesses() + " guesses. Do you want to play again? ");
+
+            scanner.nextLine();
+            String response = scanner.nextLine();
+            if (response.equals("no")) {
+                done = true;
+            } else {
+                wordGuesser.reset();
+            }
         }
-        System.out.println();
-        System.out.println("You guessed " + wordGuesser.getWholeWord().toUpperCase() + " with " + wordGuesser.getGuesses() + " guesses.");
     }
 }
