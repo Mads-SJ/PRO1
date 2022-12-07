@@ -1,54 +1,74 @@
 package wordguesser;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class WordGuesser {
-    private ArrayList<String> words;
-    private ArrayList<Character> charactersGuessed;
-    private boolean[] isCharactersGuessed;
-    private String selectedWord;
+    private final ArrayList<String> words;
+    private final ArrayList<Character> charactersGuessed;
+    private final char[] selectedWord;
     private int guesses;
-    private Scanner scanner;
 
     public WordGuesser() {
         words = new ArrayList<>();
         initWords();
-        selectedWord = null;
-        scanner = new Scanner(System.in);
+        selectedWord = getRandomWord();
+        charactersGuessed = new ArrayList<>();
+        guesses = 0;
     }
 
-    private String getRandomWord() {
+    private char[] getRandomWord() {
         int randNum = (int) ((Math.random() * words.size()));
-        return words.get(randNum);
+        return words.get(randNum).toCharArray();
     }
 
     private void initWords() {
         words.add("programmering");
         words.add("gobsmacked");
         words.add("flabbergasted");
+        words.add("datamatiker");
+        words.add("bogosort");
     }
 
-    private void initGame() {
-        charactersGuessed = new ArrayList<>();
-        guesses = 0;
-        selectedWord = getRandomWord();
-        isCharactersGuessed = new boolean[selectedWord.length()];
+    public int getGuesses() {
+        return guesses;
     }
 
-    private void takeTurn() {
-        StringBuilder word = new StringBuilder();
-        char[] charArray = selectedWord.toCharArray();
-        for (int i = 0; i < charArray.length; i++) {
-            word.append(isCharactersGuessed[i] ? charArray[i] : "*");
+    public char[] getSelectedWord() {
+        return selectedWord;
+    }
+
+    public String getWholeWord() {
+        return new String(selectedWord);
+    }
+
+    public ArrayList<Character> getCharactersGuessed() {
+        return charactersGuessed;
+    }
+
+    public boolean isCharGuessed(char c) {
+        return charactersGuessed.contains(c);
+    }
+
+    public void guess(char c) {
+        if (!charactersGuessed.contains(c)) {
+            charactersGuessed.add(c);
         }
-        System.out.println(word);
+        guesses++;
     }
 
-    public void start() {
-        initGame();
-        System.out.println("Welcome to Word Guesser!");
-        System.out.println("The length of the word is " + selectedWord.length());
-        takeTurn();
+    public int getWordLength() {
+        return selectedWord.length;
+    }
+
+    public boolean finished() {
+        boolean finished = true;
+        int i = 0;
+        while (finished && i < selectedWord.length) {
+            if (!isCharGuessed(selectedWord[i])) {
+                finished = false;
+            }
+            i++;
+        }
+        return finished;
     }
 }
