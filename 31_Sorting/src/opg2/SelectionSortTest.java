@@ -21,6 +21,7 @@ public class SelectionSortTest {
         Customer c3 = new Customer("Mikkel", "Overgaard", 24);
         Customer c4 = new Customer("Bentsen", "Bent", 24);
 
+
         ArrayList<Customer> customers = new ArrayList<>();
         customers.add(c1);
         customers.add(c2);

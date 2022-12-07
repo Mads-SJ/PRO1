@@ -63,5 +63,5 @@ public class SortMethods {
             Collections.swap(list, i, minPos);
         }
     }
-    
+
 }
