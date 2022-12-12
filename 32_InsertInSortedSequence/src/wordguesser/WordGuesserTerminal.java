@@ -3,8 +3,8 @@ package wordguesser;
 import java.util.Scanner;
 
 public class WordGuesserTerminal {
-    private WordGuesser wordGuesser;
-    private Scanner scanner;
+    private final WordGuesser wordGuesser;
+    private final Scanner scanner;
 
     public WordGuesserTerminal() {
         wordGuesser = new WordGuesser();
@@ -15,16 +15,20 @@ public class WordGuesserTerminal {
     private void guess() {
         StringBuilder sb = new StringBuilder();
         char[] charArray = wordGuesser.getSelectedWord();
-        for (int i = 0; i < charArray.length; i++) {
-            char c = charArray[i];
+        for (char c : charArray) {
             sb.append(wordGuesser.isCharGuessed(c) ? c : "*");
         }
         sb.append("    Used " + wordGuesser.getCharactersGuessed() + ".");
         sb.append(" Guess: ");
         System.out.print(sb);
 
-        char c = scanner.next().charAt(0);
-        wordGuesser.guess(c);
+        String guess = scanner.next();
+        if (guess.length() > 1) {
+            wordGuesser.guessWholeWord(guess);
+        } else {
+            char c = guess.charAt(0);
+            wordGuesser.guess(c);
+        }
     }
 
     public void start() {
@@ -45,6 +49,7 @@ public class WordGuesserTerminal {
                 done = true;
             } else {
                 wordGuesser.reset();
+                System.out.println();
             }
         }
     }

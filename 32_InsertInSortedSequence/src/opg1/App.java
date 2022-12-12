@@ -11,14 +11,10 @@ public class App {
         opg1.Customer c4 = new opg1.Customer("Ågesen", "Anders", 25);
 
         ArrayList<opg1.Customer> customers = new ArrayList<>();
-        customers.add(c1);
-        customers.add(c2);
-        customers.add(c3);
-        customers.add(c4);
-
-        Collections.sort(customers);
-
-        System.out.println(customers);
+        insertCustomer(customers, c1);
+        insertCustomer(customers, c2);
+        insertCustomer(customers, c3);
+        insertCustomer(customers, c4);
 
         Customer c5 = new Customer("Børgesen", "Børge", 30);
         insertCustomer(customers, c5);

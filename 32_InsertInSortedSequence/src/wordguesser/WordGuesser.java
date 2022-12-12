@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class WordGuesser {
     private final ArrayList<String> words;
-    private ArrayList<Character> charactersGuessed;
+    private final ArrayList<Character> charactersGuessed;
     private char[] selectedWord;
     private int guesses;
 
@@ -53,6 +53,17 @@ public class WordGuesser {
     public void guess(char c) {
         if (!charactersGuessed.contains(c)) {
             charactersGuessed.add(c);
+        }
+        guesses++;
+    }
+
+    public void guessWholeWord(String guess) {
+        if (guess.equals(getWholeWord())) {
+            for (char c : selectedWord) {
+                if (!charactersGuessed.contains(c)) {
+                    charactersGuessed.add(c);
+                }
+            }
         }
         guesses++;
     }

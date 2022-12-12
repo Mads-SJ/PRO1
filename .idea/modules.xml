@@ -34,6 +34,9 @@
       <module fileurl="file://$PROJECT_DIR$/30_Search/30_Search.iml" filepath="$PROJECT_DIR$/30_Search/30_Search.iml" />
       <module fileurl="file://$PROJECT_DIR$/31_Sorting/31_Sorting.iml" filepath="$PROJECT_DIR$/31_Sorting/31_Sorting.iml" />
       <module fileurl="file://$PROJECT_DIR$/32_InsertInSortedSequence/32_InsertInSortedSequence.iml" filepath="$PROJECT_DIR$/32_InsertInSortedSequence/32_InsertInSortedSequence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/33_Exceptions&amp;Files/33_Exceptions&amp;Files.iml" filepath="$PROJECT_DIR$/33_Exceptions&amp;Files/33_Exceptions&amp;Files.iml" />
+      <module fileurl="file://$PROJECT_DIR$/34_MergeSequences/34_MergeSequences.iml" filepath="$PROJECT_DIR$/34_MergeSequences/34_MergeSequences.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AdventOfCode/AdventOfCode.iml" filepath="$PROJECT_DIR$/AdventOfCode/AdventOfCode.iml" />
       <module fileurl="file://$PROJECT_DIR$/PRO1.iml" filepath="$PROJECT_DIR$/PRO1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Semesterproever/Semesterproever.iml" filepath="$PROJECT_DIR$/Semesterproever/Semesterproever.iml" />
     </modules>
