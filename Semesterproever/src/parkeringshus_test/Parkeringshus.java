@@ -82,4 +82,34 @@ public class Parkeringshus {
         }
         return antal;
     }
+
+    public ArrayList<String> optagnePladser() {
+        ArrayList<String> result = new ArrayList<>();
+        for (Parkeringsplads p : parkeringspladser) {
+            Bil b = p.getBil();
+            if (b != null) {
+                String info = p.getNummer() + ", " + b.getRegNr() + ", " + b.getBilmærke();
+                result.add(info);
+            }
+        }
+        return result;
+    }
+
+    public Parkeringsplads getLedigParkeringsplads() {
+        Parkeringsplads parkeringsplads = null;
+        int i = 0;
+        while (parkeringsplads == null && i < parkeringspladser.size()) {
+            Parkeringsplads p = parkeringspladser.get(i);
+            if (p.getBil() == null) {
+                parkeringsplads = p;
+            }
+            i++;
+        }
+        return parkeringsplads;
+    }
+
+    @Override
+    public String toString() {
+        return adresse;
+    }
 }

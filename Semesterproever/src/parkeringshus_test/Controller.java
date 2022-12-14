@@ -1,5 +1,13 @@
 package parkeringshus_test;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Controller {
     public static Parkeringshus createParkeringshus(String adresse) {
         Parkeringshus parkeringshus = new Parkeringshus(adresse);
@@ -27,11 +35,27 @@ public class Controller {
         parkeringsplads.setBil(bil);
     }
 
+    public static ArrayList<Parkeringshus> getParkeringshuse() {
+        return Storage.getParkeringshuse();
+    }
+
+    public static ArrayList<Bil> getBiler() {
+        return Storage.getBiler();
+    }
+
+    public static void insertCarInLedigPlads(Bil bil, Parkeringshus parkeringshus) {
+        Parkeringsplads p = parkeringshus.getLedigParkeringsplads();
+        p.setBil(bil);
+    }
+
     public static void createSomeObjects() {
         Bil b1 = Controller.createBil("AB 11 222");
         Bil b2 = Controller.createBil("EF 33 444");
         Bil b3 = Controller.createBil("BD 55 666");
-        Parkeringshus parkeringshus = Controller.createParkeringshus(": Havnegade 12, 8000 Aarhus");
+        b1.setBilmærke(Bilmærke.TESLA);
+        b2.setBilmærke(Bilmærke.PORSCHE);
+        b3.setBilmærke(Bilmærke.CORVETTE);
+        Parkeringshus parkeringshus = Controller.createParkeringshus("Havnegade 12, 8000 Aarhus");
 
         Parkeringsplads p1 = Controller.createParkeringsplads(1, parkeringshus);
         Parkeringsplads p2 = Controller.createParkeringsplads(2, parkeringshus);
@@ -49,5 +73,18 @@ public class Controller {
         Controller.setBilForParkeringsplads(b2, p2);
         Controller.setBilForParkeringsplads(b3, p3);
 
+    }
+
+    public static void writeOptagnePladser(Parkeringshus hus, String filnavn) {
+        try {
+            PrintWriter printWriter = new PrintWriter(filnavn);
+            ArrayList<String> optagnePladser = hus.optagnePladser();
+            for (String s : optagnePladser) {
+                printWriter.println(s);
+            }
+            printWriter.close();
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
