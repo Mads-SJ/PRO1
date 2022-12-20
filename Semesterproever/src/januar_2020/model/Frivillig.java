@@ -31,7 +31,8 @@ public class Frivillig {
         return new ArrayList<>(vagter);
     }
 
-    public void addVagt(Vagt vagt) {
+    // package visibility
+    void addVagt(Vagt vagt) {
         if (!vagter.contains(vagt)) {
             vagter.add(vagt);
         }

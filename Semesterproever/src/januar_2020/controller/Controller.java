@@ -69,10 +69,6 @@ public class Controller {
     public static ArrayList<Frivillig> getFrivillige() {
         return Storage.getFrivillige();
     }
-   // TODO: nedenstående metode?
-    public static ArrayList<Job> getJobsForFestival(Festival festival) {
-        return festival.getJobs();
-    }
 
     public static void initStorage() {
         Festival festival = Controller.createFestival("Northside",
