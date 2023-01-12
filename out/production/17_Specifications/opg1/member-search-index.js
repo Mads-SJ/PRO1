@@ -1,1 +1,0 @@
-memberSearchIndex = [{"p":"opg1","c":"BankAccount","l":"BankAccount(double)","u":"%3Cinit%3E(double)"},{"p":"opg1","c":"BankAccount","l":"deposit(double)"},{"p":"opg1","c":"BankAccount","l":"getBalance()"},{"p":"opg1","c":"BankAccount","l":"withdraw(double)"}];updateSearchResults();
