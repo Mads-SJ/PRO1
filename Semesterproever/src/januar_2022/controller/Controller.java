@@ -11,8 +11,6 @@ import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
-import java.util.Scanner;
 
 public class Controller {
     public static ArrayList<Løb> getLøb() {

@@ -46,4 +46,22 @@ public class Fag {
         }
         return sygeStuderende;
     }
+
+    public Lektion lektionMedMestFravær() {
+        Lektion lektionMestFravær = null;
+        int mestFravær = 0;
+        for (Lektion l : lektioner) {
+            int fravær = 0;
+            for (Deltagelse d : l.getDeltagelser()) {
+                if (d.erRegistreretFravær()) {
+                    fravær++;
+                }
+            }
+            if (fravær > mestFravær) {
+                lektionMestFravær = l;
+                mestFravær = fravær;
+            }
+        }
+        return lektionMestFravær;
+    }
 }

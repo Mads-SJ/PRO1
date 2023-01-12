@@ -2,7 +2,7 @@ package januar_2021.model;
 
 import java.util.ArrayList;
 
-public class Studerende {
+public class Studerende implements Comparable<Studerende> {
     private String navn;
     private String email;
     private ArrayList<Deltagelse> deltagelser;
@@ -39,5 +39,10 @@ public class Studerende {
             }
         }
         return antal;
+    }
+
+    @Override
+    public int compareTo(Studerende other) {
+        return navn.compareTo(other.navn);
     }
 }
