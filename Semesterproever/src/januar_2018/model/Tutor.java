@@ -81,4 +81,9 @@ public class Tutor {
                && a2.getStartTid().isBefore(a1.getSlutTid())
                && a1.getStartTid().isBefore(a2.getSlutTid());
     }
+
+    @Override
+    public String toString() {
+        return navn + " " + email;
+    }
 }

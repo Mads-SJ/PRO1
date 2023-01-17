@@ -5,7 +5,10 @@ import januar_2018.model.Hold;
 import januar_2018.model.Tutor;
 import januar_2018.model.Uddannelse;
 import januar_2018.storage.Storage;
+import januar_2021.model.Studerende;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -66,6 +69,18 @@ public class Controller {
             }
         }
         return holdUdenTutorer;
+    }
+
+    public static void tutorOversigtTilFil(String filnavn) {
+        try(PrintWriter printWriter = new PrintWriter(filnavn)) {
+            for (Uddannelse u : Storage.getUddannelser()) {
+                for (String s : u.tutorOversigt()) {
+                    printWriter.println(s);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void initStorage() {

@@ -37,4 +37,9 @@ public class Arrangement {
     public double getPris() {
         return pris;
     }
+
+    @Override
+    public String toString() {
+        return titel + " " + date + " " + startTid + " " + slutTid;
+    }
 }
